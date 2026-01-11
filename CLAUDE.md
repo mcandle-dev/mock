@@ -4,10 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a BLE-based payment system simulation for a department store (현대백화점). The system demonstrates minimal staff intervention during checkout by using real-time Socket.io communication between three main components:
+This is a BLE-based payment system simulation for a department store (현대백화점). The system demonstrates minimal staff intervention during checkout by using real-time Socket.io communication between main components:
 
 1. **VPOS** (Virtual Point of Sale) - Staff terminal
-2. **Customer App** - Customer mobile application
+   - Web version (React)
+   - Android native version (Kotlin)
+2. **Customer App** - Customer mobile application (React web app)
 3. **Server** - WebSocket server coordinating communication
 
 ## Architecture
@@ -45,13 +47,26 @@ The system uses a **Socket.io event-driven architecture** where all three applic
 cd server && npm install
 cd customer && npm install
 cd vpos && npm install
+
+# For Android VPOS (optional)
+# Open vpos_android/ in Android Studio
+# Sync Gradle dependencies automatically
 ```
 
 ### Running the Application
+
+**Web Version:**
 **Start in this order:**
 1. `cd server && node index.js` - Start WebSocket server on port 4000
 2. `cd vpos && npm run dev` - Start VPOS terminal on http://localhost:5173
 3. `cd customer && npm run dev` - Start customer app on http://localhost:5174
+
+**Android VPOS Version:**
+1. Start server: `cd server && node index.js`
+2. Open `vpos_android/` in Android Studio
+3. Update server IP address in `SocketRepository.kt` if testing on physical device
+4. Run on emulator or physical device
+5. Open Customer app (http://localhost:5174) in a browser
 
 ### Development
 - `npm run dev` - Start Vite dev server (customer & vpos)
@@ -86,6 +101,29 @@ cd vpos && npm install
 - Screen states within CARD tab: `IDLE` → `SCANNING` → `CONNECTED` → `ORDER` → `KAKAOPAY` → `DONE`
 - Simulates 3-second BLE scan delay and 2-second fingerprint authentication
 - Hardcoded user: 김준호 (HD2023091234, VIP member with 125,000 points)
+
+### VPOS Android (vpos_android/)
+- Native Android application built with Kotlin
+- MVVM architecture using ViewModel and LiveData
+- Activities: `MainActivity`, `BenefitsActivity`, `PaymentActivity`, `SuccessActivity`
+- SocketRepository pattern for Socket.io communication
+- RecyclerView with custom adapter for BLE device list
+- Material Design components with custom theming
+- Same Socket.io event flow as web VPOS
+- Simulates BLE scanning with mock device discovery
+
+**Key Components:**
+- `MainActivity.kt`: Main screen with product scanning and customer selection
+- `SocketRepository.kt`: Centralized Socket.io connection management
+- `MainViewModel.kt`: Business logic and state management
+- `BleDeviceAdapter.kt`: RecyclerView adapter for pending customers
+- Model classes: `Customer`, `Product`, `Store`
+
+**Dependencies:**
+- Socket.io client (io.socket:socket.io-client)
+- Material Design Components
+- Android Jetpack (ViewModel, LiveData)
+- Kotlin Coroutines
 
 ### Styling
 - Both React apps use custom CSS with CSS variables for theming
