@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface">
+
+    <!-- Blue Header Bar -->
+    <RelativeLayout
+        android:id="@+id/layoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="?attr/colorPrimary"
+        android:padding="12dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvHeaderLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:text="HYUNDAI VPOS"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:gravity="end"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvHeaderShop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6F 스포츠관 나이키"
+                android:textColor="?attr/colorOnPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvHeaderStaff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="한아름 (224456)"
+                android:textColor="?attr/colorOnPrimary"
+                android:alpha="0.7"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- Navigation Area -->
+    <LinearLayout
+        android:id="@+id/layoutNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        app:layout_constraintTop_toBottomOf="@id/layoutHeader">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBack"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:text="← 이전"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:paddingHorizontal="16dp"
+            app:cornerRadius="4dp"
+            app:strokeColor="#DDDEEE" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="혜택 안내"
+            android:textColor="#223344"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@id/layoutBottomBar"
+        app:layout_constraintTop_toBottomOf="@id/layoutNav">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Customer Status Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="?attr/colorSurface"
+                app:cardCornerRadius="@dimen/card_radius"
+                app:cardElevation="2dp"
+                app:strokeColor="#4CAF50"
+                app:strokeWidth="1dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tvCustomerNameLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="김준호 고객님 ✔"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvCustomerDetailLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="VIP ⭐ | HD2023091234"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:textSize="13sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvCustomerNameLabel" />
+
+                    <TextView
+                        android:id="@+id/tvPointsText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="포인트"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:textSize="11sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvCustomerPointsValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="125,000P"
+                        android:textColor="#1976D2"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvPointsText" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Recommendation 1: Hyundai Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="?attr/colorSurface"
+                app:cardCornerRadius="@dimen/card_radius"
+                app:cardElevation="4dp"
+                app:strokeColor="#1976D2"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="⭐ 추천 1: 현대백화점 카드"
+                            android:textColor="?attr/colorOnSurface"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="10% 할인"
+                            android:textColor="#4CAF50"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+
+                    <!-- Price Box -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="#F8F9FB"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView android:text="상품 금액" android:textColor="?attr/colorOnSurfaceVariant" android:textSize="14sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                            <TextView android:id="@+id/tvOriginalPrice" android:text="0원" android:textColor="?attr/colorOnSurface" android:textSize="14sp" android:layout_alignParentEnd="true" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp">
+                            <TextView android:text="VIP 할인" android:textColor="#FF9800" android:textSize="13sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                            <TextView android:id="@+id/tvDiscountAmount" android:text="0원" android:textColor="#FF9800" android:textSize="13sp" android:layout_alignParentEnd="true" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp">
+                            <TextView android:text="최종 결제액" android:textColor="?attr/colorOnSurface" android:textSize="17sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                            <TextView android:id="@+id/tvFinalPrice" android:text="0원" android:textColor="?attr/colorOnSurface" android:textSize="18sp" android:textStyle="bold" android:layout_alignParentEnd="true" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCardPayment"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_marginTop="14dp"
+                        android:backgroundTint="#1976D2"
+                        android:text="카드 결제 진행"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        app:cornerRadius="6dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Recommendation 2: App Payment -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="?attr/colorSurface"
+                app:cardCornerRadius="@dimen/card_radius"
+                app:cardElevation="2dp"
+                app:strokeColor="#DDDEEE"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="추천 2: 앱 결제 (카카오페이)"
+                            android:textColor="?attr/colorOnSurface"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="10% 적립"
+                            android:textColor="#1976D2"
+                            android:textSize="15sp" />
+                    </RelativeLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAppPayment"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_marginTop="12dp"
+                        android:text="📱 앱 결제 요청"
+                        android:textColor="#1976D2"
+                        app:cornerRadius="6dp"
+                        app:strokeColor="#1976D2" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Status Bar -->
+    <LinearLayout
+        android:id="@+id/layoutBottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?attr/colorSurface"
+        android:elevation="12dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@drawable/circle_green" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:text="Connected"
+            android:textColor="#4CAF50"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_settings"
+            app:tint="#8899AA" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

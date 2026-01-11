@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Glow effect -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#804CAF50" />
+            <size
+                android:width="16dp"
+                android:height="16dp" />
+        </shape>
+    </item>
+    <!-- Main circle -->
+    <item
+        android:left="3dp"
+        android:top="3dp"
+        android:right="3dp"
+        android:bottom="3dp">
+        <shape android:shape="oval">
+            <solid android:color="@color/md_success" />
+            <size
+                android:width="10dp"
+                android:height="10dp" />
+        </shape>
+    </item>
+</layer-list>

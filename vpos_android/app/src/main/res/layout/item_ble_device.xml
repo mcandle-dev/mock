@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/spacing_small"
+    app:cardCornerRadius="@dimen/card_radius"
+    app:cardElevation="2dp"
+    app:strokeColor="@color/md_primary_light"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_medium">
+
+        <LinearLayout
+            android:id="@+id/layoutCustomerInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ivCheckIcon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvCustomerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/md_text_primary"
+                android:textSize="@dimen/text_medium"
+                android:textStyle="bold"
+                tools:text="김준호" />
+
+            <TextView
+                android:id="@+id/tvCustomerDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/md_text_secondary"
+                android:textSize="@dimen/text_tiny"
+                tools:text="VIP ⭐ | HD2023091234" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivCheckIcon"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:contentDescription="@string/connected"
+            android:src="@drawable/ic_check_circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/md_primary" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

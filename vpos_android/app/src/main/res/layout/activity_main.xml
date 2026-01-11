@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    tools:context=".MainActivity">
+
+    <!-- AppBar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height"
+            android:background="?attr/colorPrimary"
+            app:title="@string/default_title"
+            app:titleTextColor="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/spacing_medium"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvShopLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/default_shop"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_small"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvSalesperson"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/default_salesperson"
+                    android:textColor="#B3FFFFFF"
+                    android:textSize="@dimen/text_tiny" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- 상품 정보 카드 -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardProductInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_medium"
+        app:cardCornerRadius="@dimen/card_radius"
+        app:cardElevation="@dimen/card_elevation"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_medium">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="6dp"
+                android:text="@string/product_info"
+                android:textSize="@dimen/text_medium"
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/ic_package" />
+
+            <!-- 스캔 전 상태 -->
+            <LinearLayout
+                android:id="@+id/layoutBeforeScan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/waiting"
+                    android:textSize="10sp"
+                    app:chipBackgroundColor="@color/md_primary_light" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/no_product"
+                    android:textColor="@color/md_text_disabled"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/scan_barcode"
+                    android:textColor="@color/md_text_secondary"
+                    android:textSize="@dimen/text_small" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnScanSimulation"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/touch_target"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/scan_simulation"
+                    android:textSize="@dimen/text_small" />
+            </LinearLayout>
+
+            <!-- 스캔 후 상태 -->
+            <LinearLayout
+                android:id="@+id/layoutAfterScan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/received"
+                        android:textSize="10sp"
+                        app:chipBackgroundColor="@color/md_primary_light" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/tvProductStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/md_text_secondary"
+                        android:textSize="@dimen/text_tiny"
+                        tools:text="IM8066-999" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvProductName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            tools:text="나이키 알파플라이 3" />
+
+                        <TextView
+                            android:id="@+id/tvProductDetails"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/md_text_secondary"
+                            android:textSize="@dimen/text_small"
+                            tools:text="265 / 블랙" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvProductPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="?attr/colorPrimary"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:text="349,000원" />
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCancel"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/touch_target"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/cancel"
+                    android:textSize="@dimen/text_small" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- 결제 대기 고객 카드 -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardCustomerList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/spacing_medium"
+        app:cardCornerRadius="@dimen/card_radius"
+        app:cardElevation="@dimen/card_elevation"
+        app:layout_constraintBottom_toTopOf="@id/layoutBleStatus"
+        app:layout_constraintTop_toBottomOf="@id/cardProductInfo">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_medium">
+
+            <TextView
+                android:id="@+id/tvCustomerCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="6dp"
+                android:text="@string/pending_customers"
+                android:textSize="@dimen/text_medium"
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/ic_user"
+                tools:text="결제 대기 고객 (0)" />
+
+            <!-- Empty State -->
+            <LinearLayout
+                android:id="@+id/layoutEmptyState"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible"
+                tools:visibility="gone">
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:alpha="0.38"
+                    android:src="@drawable/ic_user"
+                    android:contentDescription="@string/waiting_for_customer" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:text="@string/waiting_for_customer"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/select_card_tab"
+                    android:textColor="@color/md_text_secondary"
+                    android:textSize="@dimen/text_tiny" />
+            </LinearLayout>
+
+            <!-- RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCustomers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_ble_device"
+                tools:visibility="visible" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- BLE 상태 -->
+    <LinearLayout
+        android:id="@+id/layoutBleStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_medium"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/bottomAppBar"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@drawable/circle_green" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:text="@string/ble_active"
+            android:textColor="@color/md_success"
+            android:textSize="@dimen/text_tiny" />
+    </LinearLayout>
+
+    <!-- Bottom AppBar -->
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- Connected 상태 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:background="@drawable/circle_green_glow" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    android:text="@string/connected"
+                    android:textColor="@color/md_success"
+                    android:textSize="@dimen/text_tiny"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- 설정 버튼 -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSettings"
+                style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+                android:layout_width="@dimen/touch_target"
+                android:layout_height="@dimen/touch_target"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:contentDescription="@string/settings"
+                app:icon="@drawable/ic_settings"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp" />
+        </LinearLayout>
+    </com.google.android.material.bottomappbar.BottomAppBar>
+</androidx.constraintlayout.widget.ConstraintLayout>

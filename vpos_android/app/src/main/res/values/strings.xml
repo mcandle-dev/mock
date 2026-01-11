@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">HYUNDAI VPOS</string>
+
+    <!-- Main Screen -->
+    <string name="product_info">상품 정보</string>
+    <string name="scan_simulation">스캔 시뮬레이션</string>
+    <string name="waiting">대기중</string>
+    <string name="received">수신됨</string>
+    <string name="no_product">상품 정보 없음</string>
+    <string name="scan_barcode">바코드를 스캔하세요</string>
+    <string name="cancel">취소</string>
+
+    <!-- Customer List -->
+    <string name="pending_customers">결제 대기 고객 (%d)</string>
+    <string name="waiting_for_customer">고객 정보 대기 중…</string>
+    <string name="select_card_tab">앱의 카드 탭을 선택해주세요</string>
+
+    <!-- BLE Status -->
+    <string name="ble_active">BLE 활성화됨</string>
+    <string name="connected">Connected</string>
+
+    <!-- Settings -->
+    <string name="settings">설정</string>
+    <string name="title">Title</string>
+    <string name="shop">Shop</string>
+    <string name="salesperson">Salesperson</string>
+    <string name="save">저장</string>
+
+    <!-- Default Values -->
+    <string name="default_title">HYUNDAI VPOS</string>
+    <string name="default_shop">6F 나이키</string>
+    <string name="default_salesperson">한아름 (224456)</string>
+</resources>
